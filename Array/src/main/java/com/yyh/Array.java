@@ -28,7 +28,7 @@ public class Array<E> {
 
     // 判断数组是否为null
     public boolean isEmpty() {
-        return this.size() == 0;
+        return this.size == 0;
     }
 
     // 在index位置插入元素
