@@ -1,5 +1,7 @@
 package com.yyh;
 
+import org.w3c.dom.Node;
+
 /**
  * Author: Tong
  * Date: 2021/5/26
@@ -120,6 +122,44 @@ public class DummyHeadLinkedList<E> {
     // 从链表中删除最后一个元素, 返回删除的元素
     public E removeLast() {
         return remove(size - 1);
+    }
+
+    // 从链表中删除元素e
+    public void removeElement(E e) {
+
+        Node prev = dummyHead;
+        while (prev.next != null) {
+            if (prev.next.e.equals(e))
+                break;
+            prev = prev.next;
+        }
+
+        if (prev.next != null) {
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null;
+        }
+    }
+
+    // 获得链表的第index(0-based)个位置的元素
+    // 在链表中不是一个常用的操作，练习用：）
+    public E get(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Get failed. Illegal index.");
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++)
+            cur = cur.next;
+        return cur.e;
+    }
+
+    // 获得链表的第一个元素
+    public E getFirst() {
+        return get(0);
+    }
+
+    // 获得链表的最后一个元素
+    public E getLast() {
+        return get(size - 1);
     }
 
     @Override
