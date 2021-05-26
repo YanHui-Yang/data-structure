@@ -58,6 +58,14 @@ public class Array<E> {
         return this.data[i];
     }
 
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
     // 修改在index索引的元素
     public void set(int index, E e) {
         this.data[index] = e;
@@ -80,7 +88,7 @@ public class Array<E> {
 
     // 从数组中删除index位置的元素, 返回删除的元素
     public E remove(int index) {
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new IllegalArgumentException("Remove failed. Index is illegal.");
 
         E ret = data[index];
