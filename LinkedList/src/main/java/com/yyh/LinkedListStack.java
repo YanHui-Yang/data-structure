@@ -9,6 +9,10 @@ public class LinkedListStack<E> implements Stack<E> {
 
     private DummyHeadLinkedList<E> list;
 
+    public LinkedListStack(){
+        list = new DummyHeadLinkedList<>();
+    }
+
     @Override
     public int getSize() {
         return list.getSize();
@@ -31,6 +35,27 @@ public class LinkedListStack<E> implements Stack<E> {
 
     @Override
     public E peek() {
-        return null;
+        return list.getFirst();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        res.append("Stack: top ");
+        res.append(list);
+        return res.toString();
+    }
+
+    public static void main(String[] args) {
+
+        LinkedListStack<Integer> stack = new LinkedListStack<>();
+
+        for (int i = 0; i < 5; i++) {
+            stack.push(i);
+            System.out.println(stack);
+        }
+
+        stack.pop();
+        System.out.println(stack);
     }
 }
