@@ -23,7 +23,7 @@ public class Array<E> {
 
     // 获取数组容量
     public int size() {
-        return data.length;
+        return size;
     }
 
     // 判断数组是否为null
@@ -106,7 +106,7 @@ public class Array<E> {
 
     // 从数组中删除最后一个元素, 返回删除的元素
     public E removeLast() {
-        return remove(size);
+        return remove(size - 1);
     }
 
     // 从数组中删除元素e
