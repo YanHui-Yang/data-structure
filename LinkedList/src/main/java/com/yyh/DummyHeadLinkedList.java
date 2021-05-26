@@ -1,7 +1,5 @@
 package com.yyh;
 
-import org.w3c.dom.Node;
-
 /**
  * Author: Tong
  * Date: 2021/5/26
@@ -97,10 +95,36 @@ public class DummyHeadLinkedList<E> {
         return false;
     }
 
+    // 从链表中删除index(0-based)位置的元素, 返回删除的元素
+    // 在链表中不是一个常用的操作，练习用：）
+    public E remove(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Remove failed. Illegal index.");
+
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++)
+            prev = prev.next;
+
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        size--;
+        return retNode.e;
+    }
+
+    // 从链表中删除第一个元素, 返回删除的元素
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    // 从链表中删除最后一个元素, 返回删除的元素
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-
 //        Node cur = dummyHead.next;
 //        while(cur != null){
 //            res.append(cur + "->");
@@ -111,5 +135,25 @@ public class DummyHeadLinkedList<E> {
         res.append("NULL");
 
         return res.toString();
+    }
+
+    public static void main(String[] args) {
+        DummyHeadLinkedList<Integer> linkedList = new DummyHeadLinkedList<>();
+        for (int i = 0; i < 5; i++) {
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
+        }
+
+        linkedList.add(2, 666);
+        System.out.println(linkedList);
+
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+
+        linkedList.removeLast();
+        System.out.println(linkedList);
     }
 }
