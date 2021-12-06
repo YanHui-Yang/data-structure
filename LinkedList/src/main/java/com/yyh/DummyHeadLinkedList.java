@@ -1,7 +1,7 @@
 package com.yyh;
 
 public class DummyHeadLinkedList<E> {
-    private class Node<E> {
+    private class Node {
         private E e;
         private Node next;
 
@@ -28,7 +28,7 @@ public class DummyHeadLinkedList<E> {
     private Node dummyHead;
 
     public DummyHeadLinkedList() {
-        this.dummyHead = null;
+        this.dummyHead = new Node();
         this.size = 0;
     }
 
@@ -43,7 +43,7 @@ public class DummyHeadLinkedList<E> {
     // 向链表指定索引处添加元素
     public void add(int index, E e) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
+            throw new IllegalArgumentException("Add failed. Illegal index.");
         }
         Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
@@ -62,5 +62,73 @@ public class DummyHeadLinkedList<E> {
     // 链表尾插入一个元素
     public void addLast(E e) {
         add(size, e);
+    }
+
+    // 查询指定索引的元素
+    public E get(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Get failed. Require index >= 0 and index <= size.");
+        }
+
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    // 查询链表的第一个元素
+    public E getFirst() {
+        return get(0);
+    }
+
+    // 查询链表的最后一个元素
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    // 修改链表的第index个位置的元素为e
+    public void set(int index, E e) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed. Illegal index.");
+        }
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    // 查找链表中是否有元素e
+    public boolean contains(E e) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.e.equals(e)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Node cur = dummyHead.next; cur != null; cur = cur.next) {
+            sb.append(cur + " -> ");
+        }
+        sb.append("NULL");
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        DummyHeadLinkedList<Integer> linkedList = new DummyHeadLinkedList<>();
+        for(int i = 0 ; i < 5 ; i ++){
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
+        }
+
+        linkedList.add(2, 666);
+        System.out.println(linkedList);
     }
 }

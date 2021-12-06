@@ -2,7 +2,7 @@ package com.yyh;
 
 public class LinkedList<E> {
     // 初始化一个节点类
-    private class Node<E> {
+    private class Node {
         private E e;
         private Node next;
 
