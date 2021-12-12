@@ -9,7 +9,7 @@ public class StackLinkedList<E> implements Stack<E> {
     }
 
     @Override
-    public int getSize() {
+    public int size() {
         return list.size();
     }
 

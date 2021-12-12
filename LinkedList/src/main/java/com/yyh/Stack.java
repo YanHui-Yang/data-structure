@@ -2,7 +2,7 @@ package com.yyh;
 
 public interface Stack<E> {
 
-    int getSize();
+    int size();
 
     boolean isEmpty();
 
