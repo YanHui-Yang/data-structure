@@ -6,6 +6,7 @@ public class LoopQueue<E> implements Queue<E> {
     private int front, tail;
     private int size;
 
+    @SuppressWarnings("unchecked")
     public LoopQueue(int capacity) {
         data = (E[]) new Object[capacity + 1];
         front = 0;
