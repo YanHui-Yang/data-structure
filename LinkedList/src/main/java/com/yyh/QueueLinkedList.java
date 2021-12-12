@@ -106,4 +106,5 @@ public class QueueLinkedList<E> implements Queue<E> {
             }
         }
     }
+
 }

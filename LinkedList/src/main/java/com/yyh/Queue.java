@@ -11,4 +11,5 @@ public interface Queue<E> {
     E dequeue();
 
     E getFront();
+
 }
