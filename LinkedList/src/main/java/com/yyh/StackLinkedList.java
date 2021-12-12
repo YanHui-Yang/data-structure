@@ -53,4 +53,5 @@ public class StackLinkedList<E> implements Stack<E> {
         stack.pop();
         System.out.println(stack);
     }
+
 }
