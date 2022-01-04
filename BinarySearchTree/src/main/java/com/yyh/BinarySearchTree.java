@@ -31,7 +31,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return this.size == 0;
     }
 
-    // 向二分搜索树中添加新的元素e
+    /*// 向二分搜索树中添加新的元素e
     public void add(E e) {
 
         // 首先添加根节点
@@ -64,5 +64,29 @@ public class BinarySearchTree<E extends Comparable<E>> {
         } else {
             add(node.right, e);
         }
+    }*/
+
+    // 优化二分搜索树添加功能
+    public void add(E e) {
+
+        root = add(root, e);
+    }
+
+    // 向以node为根的二分搜索树中插入元素e，递归算法
+    // 返回插入新节点后二分搜索树的根
+    public Node add(Node node, E e) {
+
+        if (node == null) {
+            size++;
+            return new Node(e);
+        }
+
+        if (e.compareTo(node.e) < 0) {
+            node.left = add(node.left, e);
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = add(node.right, e);
+        }
+
+        return node;
     }
 }
