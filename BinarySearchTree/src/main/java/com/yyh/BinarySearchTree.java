@@ -1,5 +1,7 @@
 package com.yyh;
 
+import java.util.Stack;
+
 public class BinarySearchTree<E extends Comparable<E>> {
 
     private class Node {
@@ -159,6 +161,23 @@ public class BinarySearchTree<E extends Comparable<E>> {
         preOrder(node.left);
         preOrder(node.right);
         System.out.println(node.e);
+    }
+
+    // 使用栈实现非递归的前序遍历
+    public void preOrderNR() {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
     }
 
     @Override

@@ -26,5 +26,8 @@ public class TestBST {
 
         bst.postOrder();
         System.out.println();
+
+        bst.preOrderNR();
+        System.out.println();
     }
 }
