@@ -74,7 +74,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     // 向以node为根的二分搜索树中插入元素e，递归算法
     // 返回插入新节点后二分搜索树的根
-    public Node add(Node node, E e) {
+    private Node add(Node node, E e) {
 
         if (node == null) {
             size++;
@@ -88,5 +88,25 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
 
         return node;
+    }
+
+    public boolean contains(E e) {
+        return contains(root, e);
+    }
+
+    private boolean contains(Node node, E e) {
+
+        // 递归出口，当node节点为null，也就是不存在该元素，return false
+        if (node == null) {
+            return false;
+        }
+
+        if (e.compareTo(node.e) == 0) {
+            return true;
+        } else if (e.compareTo(node.e) < 0) {
+            return contains(node.left, e);
+        } else {
+            return contains(node.right, e);
+        }
     }
 }
