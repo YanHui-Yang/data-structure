@@ -29,5 +29,8 @@ public class TestBST {
 
         bst.preOrderNR();
         System.out.println();
+
+        bst.levelOrder();
+        System.out.println();
     }
 }
