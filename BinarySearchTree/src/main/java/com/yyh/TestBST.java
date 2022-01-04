@@ -23,5 +23,8 @@ public class TestBST {
 
         bst.inOrder();
         System.out.println();
+
+        bst.postOrder();
+        System.out.println();
     }
 }
