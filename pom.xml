@@ -12,6 +12,7 @@
         <module>Array</module>
         <module>LinkedList</module>
         <module>BinarySearchTree</module>
+        <module>Set</module>
     </modules>
 
 
